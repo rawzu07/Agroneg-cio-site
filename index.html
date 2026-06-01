@@ -1,0 +1,876 @@
+<h1><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site dedicado à preservação do meio ambiente e sustentabilidade">
+    <meta name="keywords" content="meio ambiente, sustentabilidade, preservação, reciclagem, ecologia">
+    <meta name="author" content="Projeto Ambiental">
+    
+    <title>Preservação Ambiental | Sustentabilidade</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: ##f8fc0a;
+            background:#83f752;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #e33109 0%, #f74c25 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: #8bc34a;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-menu a:hover {
+            opacity: 0.8;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2d5a2c 0%, #1a4a1a 100%);
+            color: white;
+            padding: 8rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "🌿";
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.1;
+            bottom: -50px;
+            right: -50px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: white;
+            color: #8bc34a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease 0.4s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2e782c;
+        }
+
+        .section-title i {
+            margin-right: 15px;
+            color: #8bc34a;
+        }
+
+        /* Problem Section */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .problem-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .problem-card:nth-child(1) i { color: #ff6b6b; }
+        .problem-card:nth-child(2) i { color: #ffb347; }
+        .problem-card:nth-child(3) i { color: #4ecdc4; }
+
+        .problem-card h3 {
+            margin-bottom: 1rem;
+            color: #2d5a2c;
+        }
+
+        /* Solutions Section */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .solution-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .solution-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #8bc34a 0%, #2d5a2c 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .solution-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .solution-card h3 {
+            margin-bottom: 1rem;
+            color: #2d5a2c;
+        }
+
+        /* Tips Section */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .tip-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #8bc34a;
+            transition: transform 0.3s;
+        }
+
+        .tip-card:hover {
+            transform: translateX(5px);
+        }
+
+        .tip-card i {
+            font-size: 2rem;
+            color: #8bc34a;
+            margin-bottom: 1rem;
+        }
+
+        .tip-card h3 {
+            margin-bottom: 0.5rem;
+            color: #2d5a2c;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, #2d5a2c 0%, #1a4a1a 100%);
+            color: white;
+            padding: 4rem 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: white;
+        }
+
+        /* Contact Form */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            color: #2d5a2c;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .info-item i {
+            width: 40px;
+            height: 40px;
+            background: #8bc34a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 1rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #2d5a2c;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #8bc34a 0%, #2d5a2c 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a3a1a;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #8bc34a;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #2d5a2c;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(45, 90, 44, 0.95);
+                flex-direction: column;
+                padding: 1rem 0;
+                gap: 0;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                text-align: center;
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-leaf"></i>
+                EcoPreserve
+            </a>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#problems">Problemas</a></li>
+                <li><a href="#solutions">Soluções</a></li>
+                <li><a href="#tips">Dicas</a></li>
+                <li><a href="#gallery">Galeria</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Juntos pela Preservação do Meio Ambiente</h1>
+                <p>Cada ação conta na construção de um futuro sustentável. Faça parte dessa mudança!</p>
+                <a href="#tips" class="btn">Como Ajudar →</a>
+            </div>
+        </section>
+
+        <section id="problems" class="container">
+            <h2 class="section-title">
+                <i class="fas fa-exclamation-triangle"></i>
+                Problemas Ambientais
+            </h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <i class="fas fa-tree"></i>
+                    <h3>Desmatamento</h3>
+                    <p>Perda de 12 milhões de hectares de floresta por ano no mundo, afetando a biodiversidade e o clima global.</p>
+                </div>
+                <div class="problem-card">
+                    <i class="fas fa-trash-alt"></i>
+                    <h3>Poluição</h3>
+                    <p>8 milhões de toneladas de plástico vão parar nos oceanos anualmente, ameaçando a vida marinha.</p>
+                </div>
+                <div class="problem-card">
+                    <i class="fas fa-temperature-high"></i>
+                    <h3>Aquecimento Global</h3>
+                    <p>Aumento de 1.1°C na temperatura média global desde a era pré-industrial.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="solutions" class="container">
+            <h2 class="section-title">
+                <i class="fas fa-lightbulb"></i>
+                Soluções Sustentáveis
+            </h2>
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h3>Reciclagem</h3>
+                    <p>Separe seus resíduos e contribua para a economia circular. Recicle papel, plástico, vidro e metal.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <i class="fas fa-solar-panel"></i>
+                    </div>
+                    <h3>Energia Limpa</h3>
+                    <p>Invista em fontes renováveis como solar e eólica para reduzir as emissões de carbono.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Consumo Consciente</h3>
+                    <p>Pense antes de comprar. Prefira produtos duráveis, locais e com baixo impacto ambiental.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tips" class="container">
+            <h2 class="section-title">
+                <i class="fas fa-clipboard-list"></i>
+                Dicas Práticas para o Dia a Dia
+            </h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-water"></i>
+                    <h3>Economize Água</h3>
+                    <p>Feche a torneira ao escovar os dentes e conserte vazamentos.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-car"></i>
+                    <h3>Use Transporte Sustentável</h3>
+                    <p>Prefira bicicleta, transporte público ou carona compartilhada.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-shopping-bag"></i>
+                    <h3>Evite Plásticos</h3>
+                    <p>Use sacolas retornáveis e garrafas reutilizáveis.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Plante uma Árvore</h3>
+                    <p>Participe de campanhas de reflorestamento na sua cidade.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-plug"></i>
+                    <h3>Economize Energia</h3>
+                    <p>Desligue aparelhos da tomada e use lâmpadas LED.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Coma Local</h3>
+                    <p>Prefira alimentos orgânicos e produzidos na sua região.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <i class="fas fa-tree"></i>
+                    <div class="stat-number" data-target="500">0</div>
+                    <p>Árvores Plantadas</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-recycle"></i>
+                    <div class="stat-number" data-target="1000">0</div>
+                    <p>Toneladas Recicladas</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-users"></i>
+                    <div class="stat-number" data-target="5000">0</div>
+                    <p>Voluntários</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-globe"></i>
+                    <div class="stat-number" data-target="50">0</div>
+                    <p>Cidades Impactadas</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="container">
+            <h2 class="section-title">
+                <i class="fas fa-images"></i>
+                Galeria Ambiental
+            </h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <i class="fas fa-water"></i>
+                </div>
+                <div class="gallery-item">
+                    <i class="fas fa-mountain"></i>
+                </div>
+                <div class="gallery-item">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="gallery-item">
+                    <i class="fas fa-dove"></i>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="container">
+            <h2 class="section-title">
+                <i class="fas fa-envelope"></i>
+                Entre em Contato
+            </h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Informações de Contato</h3>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(11) 99999-9999</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>contato@ecopreserve.org</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>São Paulo, SP - Brasil</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Seg-Sex: 9h às 18h</span>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" name="message" placeholder="Compartilhe sua ideia ou dúvida sobre preservação ambiental..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Enviar Mensagem</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-leaf"></i> EcoPreserve</h3>
+                <p>Comprometidos com a preservação do meio ambiente e a construção de um futuro sustentável para todos.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#problems">Problemas</a></li>
+                    <li><a href="#solutions">Soluções</a></li>
+                    <li><a href="#tips">Dicas</a></li>
+                    <li><a href="#gallery">Galeria</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Recursos</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><a href="#">Voluntariado</a></li>
+                    <li><a href="#">Doações</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 EcoPreserve - Todos os direitos reservados | Preservar é preciso!</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Mensagem enviada com sucesso! Entraremos em contato em breve para juntos preservarmos o meio ambiente.');
+            contactForm.reset();
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.style.background = 'linear-gradient(135deg, #2d5a2c 0%, #1a4a1a 100%)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.2)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #2d5a2c 0%, #1a4a1a 100%)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Animação dos números das estatísticas
+        const statsSection = document.querySelector('.stats-section');
+        const statNumbers = document.querySelectorAll('.stat-number');
+        let animated = false;
+
+        function animateNumbers() {
+            if (animated) return;
+            
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        stat.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(current);
+                    }
+                }, 30);
+            });
+            animated = true;
+        }
+
+        // Observador de scroll para ativar animação
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNumbers();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(statsSection);
+
+        // Efeito nos cards de solução
+        const solutionCards = document.querySelectorAll('.solution-card');
+        solutionCards.forEach(card => {
+            card.addEventListener('click', () => {
+                alert('Saiba mais sobre esta solução sustentável! Acesse nosso blog para mais informações.');
+            });
+        });
+
+        // Efeito na galeria
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                alert('Em breve teremos fotos reais de projetos ambientais aqui!');
+            });
+        });
+    </script>
+</body>
+</html></h1>
